@@ -1,9 +1,13 @@
 class AdmissionSystem {
     constructor() {
-        this.worker = new Worker('worker.js');
+        this.worker = new Worker('/worker.js'); 
         this.initialize();
     }
-
+// 添加错误处理
+  this.worker.onerror = (e) => {
+    console.error('Worker error:', e);
+    this.showError('数据处理线程异常');
+  };
   // 修改初始化方法
   initialize() {
     this.registerEventListeners();
