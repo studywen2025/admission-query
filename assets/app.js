@@ -79,6 +79,12 @@ class AdmissionSystem {
         `;
         return wrapper;
     }
+
+    // 其他方法保持类似结构...
+}
+
+// 初始化系统
+const system = new AdmissionSystem();
     // 在app.js的AdmissionSystem类中添加方法
 class AdmissionSystem {
   constructor() {
@@ -94,8 +100,3 @@ class AdmissionSystem {
       table.style.minWidth = `${table.parentElement.offsetWidth}px`;
     }
   }
-    // 其他方法保持类似结构...
-}
-
-// 初始化系统
-const system = new AdmissionSystem();
