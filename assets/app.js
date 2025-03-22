@@ -4,10 +4,12 @@ class AdmissionSystem {
         this.initialize();
     }
 
-    initialize() {
-        this.registerEventListeners();
-        this.setupWorker();
-    }
+  // 修改初始化方法
+  initialize() {
+    this.registerEventListeners();
+    this.setupWorker();
+    this.adjustTableLayout(); // 初始化时调用一次
+  }
 
     registerEventListeners() {
         document.getElementById('fileInput').addEventListener('change', e => this.handleFileUpload(e));
@@ -73,7 +75,21 @@ class AdmissionSystem {
         `;
         return wrapper;
     }
+    // 在app.js的AdmissionSystem类中添加方法
+class AdmissionSystem {
+  constructor() {
+    // 初始化代码...
+    this.adjustTableLayout = this.adjustTableLayout.bind(this); // 绑定上下文
+  }
 
+  // 新增表格布局调整方法
+  adjustTableLayout() {
+    const table = document.getElementById('dataTable');
+    if (table) {
+      // 实现具体的布局调整逻辑
+      table.style.minWidth = `${table.parentElement.offsetWidth}px`;
+    }
+  }
     // 其他方法保持类似结构...
 }
 
