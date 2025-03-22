@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究生招生智能查询系统 | 启航教育</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 头部品牌区 -->
+        <header class="brand-header">
+            <img src="data:image/svg+xml;base64,..." alt="logo" class="brand-logo">
+            <h1>研究生招生信息查询系统</h1>
+        </header>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 数据上传卡 -->
+            <section class="upload-card glass-card">
+                <div class="upload-wrapper">
+                    <input type="file" id="fileInput" accept=".xlsx" hidden>
+                    <label for="fileInput" class="upload-area">
+                        <div class="upload-icon"></div>
+                        <p class="upload-text">点击上传招生数据表<br><small>支持.xlsx格式，最大200MB</small></p>
+                    </label>
+                </div>
+                <div class="status-indicator"></div>
+            </section>
+
+            <!-- 动态筛选卡 -->
+            <section class="filter-card glass-card">
+                <div class="filter-header">
+                    <h2>智能筛选器</h2>
+                    <div class="filter-controls">
+                        <button class="btn-secondary" id="resetFilters">重置</button>
+                        <button class="btn-primary" id="toggleAdvanced">高级筛选</button>
+                    </div>
+                </div>
+                <div id="dynamicFilters" class="basic-filters"></div>
+                <div id="advancedFilters" class="advanced-filters"></div>
+            </section>
+
+            <!-- 数据展示卡 -->
+            <section class="data-card glass-card">
+                <div class="toolbar">
+                    <div class="result-info">
+                        <span id="resultCount">0</span> 条匹配结果
+                        <div class="sort-control">
+                            <select id="sortBy" class="glass-select">
+                                <option value="">默认排序</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-export" id="exportBtn" disabled>
+                        <span class="export-icon"></span>
+                        导出数据
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table id="dataTable">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="pagination-control"></div>
+            </section>
+        </main>
+
+        <!-- 全局加载状态 -->
+        <div class="global-loading">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">正在处理数据...</p>
+        </div>
+
+        <!-- 错误提示 -->
+        <div class="error-toast">
+            <div class="error-icon"></div>
+            <p class="error-message"></p>
+        </div>
+    </div>
+    
+    <script src="assets/app.js"></script>
+</body>
+</html>
